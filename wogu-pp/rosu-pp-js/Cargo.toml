@@ -1,0 +1,34 @@
+[package]
+name = "rosu-pp-js"
+version = "4.0.1"
+edition = "2024"
+authors = ["MaxOhn <ohn.m@hotmail.de>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/MaxOhn/rosu-pp-js"
+description = "Difficulty and performance calculation for osu!"
+keywords = ["osu", "pp", "stars", "performance", "difficulty"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+js-sys = "0.3.69"
+rosu-mods = { version = "0.4.1", default-features = false, features = ["serde"] }
+rosu-pp = { path = "../rosu-pp" }
+# rosu-pp = { git = "https://github.com/MaxOhn/rosu-pp", branch = "pp-update" }
+serde = { version = "1.0.197", features = ["derive"] }
+wasm-bindgen = "=0.2.108"
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.34"
+
+# https://github.com/rustwasm/wasm-pack/issues/1501#issuecomment-2898697188
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["--enable-bulk-memory", "--enable-nontrapping-float-to-int"]
+
+[profile.release]
+lto = true
+panic = "abort"
+codegen-units = 1
+strip = true

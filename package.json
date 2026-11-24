@@ -20,6 +20,11 @@
   "peerDependencies": {
     "typescript": "^5"
   },
+    "overrides": {
+     "@bogeychan/elysia-logger": {
+        "elysia": "$elysia"
+      }
+    },
   "dependencies": {
     "@bogeychan/elysia-logger": "^0.1.4",
     "@elysia/cors": "2.0.0-rc.1",
@@ -41,7 +46,7 @@
     "pino-pretty": "^11.3.0",
     "postgres": "^3.4.5",
     "qs": "^6.14.0",
-    "rosu-pp-js": "npm:@richardscull/rosu-pp-js@4.0.1-experimental.3",
+    "rosu-pp-js": "file:./wogu-pp/rosu-pp-js/pkg",
     "typebox": "^1.4.7"
   },
   "devDependencies": {
